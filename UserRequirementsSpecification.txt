@@ -1,0 +1,974 @@
+1. User Authentication and Account Management
+1.1 User Registration
+Description: The system shall provide a registration interface allowing visitors to create user accounts.
+Required Information:
+•	Email address (required, must be valid format)
+•	Name (required)
+•	Password (required)
+•	Profile image (optional during registration)
+UI Requirements:
+•	Registration form with clearly labeled fields
+•	Required fields marked with asterisk (*)
+•	Password strength indicator
+•	"Sign Up" button prominently displayed
+•	Link to login page for existing users
+Process:
+1.	System validates input fields in real-time
+2.	System sends verification email to provided address
+3.	System creates inactive account until email verification is completed
+Exception Handling:
+•	Display specific error messages for each validation failure:
+o	"Please enter a valid email address" (for invalid email format)
+o	"This email is already registered" (for duplicate email)
+o	"Password must be at least 6 characters" (for password length)
+o	"Name field cannot be empty" (for missing name)
+•	Allow resending verification email with clear "Resend" button
+Data Storage:
+•	User credentials stored securely in database
+•	User role assigned (default: "user")
+1.2 User Login
+Description: The system shall authenticate registered users through a login process.
+Required Information:
+•	Email address (required)
+•	Password (required)
+UI Requirements:
+•	Clean login form with email and password fields
+•	"Remember me" checkbox option
+•	"Login" button prominently displayed
+•	"Forgot Password?" link clearly visible
+•	Link to registration for new users
+Process:
+1.	System validates credentials against database records
+2.	System creates authenticated session
+3.	System redirects to homepage upon successful login
+Exception Handling:
+•	Display specific error messages:
+o	"Invalid email or password" (for authentication failure)
+o	"Your account is not verified. Please check your email" (for unverified accounts)
+o	"Please enter your email address" (for empty email field)
+o	"Please enter your password" (for empty password field)
+•	Provide password reset option on login screen
+1.3 User Profile Management
+Description: The system shall allow users to view and modify their personal information.
+Manageable Information:
+•	Profile photo (optional)
+•	Name (required)
+•	Email address (required)
+•	Phone number (optional)
+•	Password (change requires current password verification)
+UI Requirements:
+•	Profile overview section showing current information
+•	Edit buttons for each information section
+•	Profile image upload with preview functionality
+•	Save/Cancel buttons for edit operations
+•	Clear form validation feedback
+Address Management:
+•	Multiple addresses supported
+•	Address types: Default, Home, Office
+•	Required address fields: Country, City, Address lines, ZIP/Postal code
+•	"Add New Address" button and address deletion option
+Account Security:
+•	Password change form with current and new password fields
+•	Password confirmation field to prevent typos
+•	Clear success messages after profile updates
+Exception Handling:
+•	Display specific validation errors for each field:
+o	"Please enter a valid phone number" (for invalid phone format)
+o	"Current password is incorrect" (for wrong current password)
+o	"New passwords don't match" (for password confirmation mismatch)
+o	"Please provide a complete address" (for missing required address fields)
+•	Confirm sensitive actions with clear confirmation dialogs
+2.1 Home Page Functionality
+Description: The system shall provide a user-friendly home page that showcases products and promotions.
+Key Features:
+•	Display featured products from all sellers with pagination (6 products per page)
+•	Highlight best-selling products based on total sales (top 4-6 products)
+•	Show active promotional events with clear visual indicators
+•	Provide access to FAQ section through navigation menu
+Display Elements:
+•	Products must show: main image, title, discounted price, original price, and star rating
+•	Best-selling products should be distinctly highlighted
+•	Events should include: event banner and discount percentage
+•	Navigation bar must remain accessible at all times
+Exception Handling:
+•	When no products are available: "No products currently available. Please check back soon."
+•	When no events are active: "No special events running at this time. Check our regular catalog for great deals!"
+•	During slow loading: Show loading indicator with "Loading products..." message
+Test Data:
+•	Featured products: Mix of various categories (electronics, clothing, accessories)
+•	Best sellers: Products with highest recorded sales
+•	Events: Flash sale with 25% discount on selected items
+2.2 Product Categorization
+Description: The system shall organize products into logical categories for intuitive browsing.
+Predefined Categories:
+•	Computers and Laptops
+•	Mobile and Tablets
+•	Accessories
+•	Clothes
+•	Shoes
+•	Music and Gaming
+•	Others
+UI Requirements:
+•	Categories displayed in navigation menu with recognizable icons
+•	Active category should be visually distinguished
+•	Filter panel positioned on the left side of product listing
+•	Clear "Reset Filters" button at bottom of filter panel
+Filtering Capabilities:
+•	Filter products by category with clear visual indicators
+•	Apply price range filter with minimum and maximum values
+•	Filter by rating (1-5 stars)
+•	Sort by: newest, price (low to high), price (high to low)
+Exception Handling:
+•	When filters return no results: "No products match your current filters. Try adjusting your selection."
+•	When category has limited products: "Limited selection in this category. Browse other categories or check back soon."
+•	During filter application: Show "Applying filters..." indicator
+Test Data:
+•	Category with many products: Computers and Laptops (10+ items)
+•	Category with few products: Music and Gaming (3-5 items)
+•	Price range: $15-$1099
+•	Ratings: 1-5 stars
+2.3 Search Functionality
+Description: The system shall provide search capabilities to help users find products quickly.
+UI Requirements:
+•	Search bar positioned in header, visible on all pages
+•	Search icon and placeholder text "Search for products..."
+•	Search results displayed in same format as category browsing
+Search Features:
+•	Search by product name or category
+•	Display search results with pagination (6 products per page)
+•	Remember recent searches for returning users
+Results Display:
+•	Display matching products in grid layout
+•	Show "X results found for [search term]" at top of results
+•	Provide sorting options: relevance (default), price (low to high), price (high to low)
+Exception Handling:
+•	No search results: "No products found for '[search term]'. Try different keywords or browse categories."
+•	Minimum search characters: "Please enter at least 2 characters to search"
+•	During search: Show "Searching..." indicator
+Test Data:
+•	Common search terms: "laptop", "shoes", "headphones"
+•	Partial terms: "lap", "head"
+•	Search with no results: "zxcvbnm"
+2.4 Product Details
+Description: The system shall display comprehensive product information to help users make informed purchasing decisions.
+UI Requirements:
+•	Product images displayed prominently on left side
+•	Product information (name, price, description) on right side
+•	Reviews section below product information
+•	Navigation tabs for Description, Reviews, and Seller Information
+Product Information:
+•	Product name, category, and multiple product images (up to 5)
+•	Price information (current price and original price if discounted)
+•	Detailed description
+•	Current stock availability
+•	Seller name with link to shop page
+•	Average product rating (out of 5 stars)
+•	Related products section (4 items)
+User Interaction Elements:
+•	Image gallery with clickable thumbnails
+•	Quantity selector (minimum 1, maximum based on stock)
+•	Add to Cart button with visual feedback
+•	Add to Wishlist button with heart icon
+•	Product reviews showing user name, rating, and comment
+Exception Handling:
+•	Out of stock products: "Currently out of stock" with disabled Add to Cart button
+•	No reviews: "No reviews yet for this product. Be the first to leave a review!"
+•	Image loading failure: Show placeholder image with "Image not available"
+Test Data:
+•	Product with multiple images: Electronics item with 4-5 images
+•	Product with reviews: Item having 3-5 customer reviews with ratings
+•	Product with discount: Item showing both original and discounted price
+•	Product with low stock: Item with only 1-2 units remaining
+3.1 Wishlist Management
+Description: The system shall allow users to save products of interest for future consideration.
+Wishlist Features:
+•	Add products to wishlist from product detail page or product listings with a single click
+•	Remove products from wishlist with a simple click on the heart icon
+•	Transfer items from wishlist to cart with a dedicated "Add to Cart" button
+•	Save wishlist items to user account (persistent across sessions and devices)
+UI Requirements:
+•	Heart icon should appear on all product cards and product detail pages
+•	Empty heart icon for non-wishlist items, filled heart for wishlist items
+•	Wishlist page should display products in a grid layout similar to product listings
+•	Toast notification should appear when adding/removing items
+Visual Indicators:
+•	Show wishlist status on product cards through heart icon (filled/unfilled)
+•	Display brief toast notification confirming addition/removal
+•	Indicate when wishlist items are on sale or out of stock
+•	Show product price and availability status for each wishlist item
+Exception Handling:
+•	When guest users attempt to use wishlist: "Please log in to save items to your wishlist"
+•	When wishlist is empty: "Your wishlist is empty. Browse our products to add items you like"
+•	When adding item already in wishlist: "This item is already in your wishlist"
+•	When item is out of stock: "This item is currently out of stock but will remain in your wishlist"
+3.2 Shopping Cart
+Description: The system shall provide a functional shopping cart that allows users to manage their intended purchases.
+UI Requirements:
+•	Cart icon in header with item count badge
+•	Cart dropdown/sidebar for quick view
+•	Full cart page with detailed product information
+•	Clear layout with product images, names, prices, and quantity controls
+•	Mobile-responsive design with easy interaction on small screens
+Cart Functionality:
+•	Add products to cart from product detail page or product cards
+•	Specify product quantity (minimum 1, maximum based on stock availability)
+•	Remove products from cart with a "Remove" button
+•	Update product quantities with "+" and "-" buttons
+•	Show cart subtotal in header and detailed breakdown in cart page
+•	Persist cart contents for authenticated users across sessions
+Validation Rules:
+•	Prevent adding more items than available in stock
+•	Automatically adjust quantities if stock levels change while items are in cart
+•	Display updated prices if discounts change during shopping session
+•	Show current product availability status in cart
+Exception Handling:
+•	Empty cart: "Your shopping cart is empty. Start shopping now!"
+•	Item no longer available: "This product is no longer available and has been removed from your cart"
+•	Stock reduction: "Quantity adjusted based on current availability"
+•	Connectivity issue: "Changes saved locally and will update when connection is restored"
+4.1 Checkout Process
+Description: The system shall provide a secure, user-friendly checkout process enabling customers to complete their purchases.
+UI Requirements:
+•	Clear, step-based checkout process with progress indicator
+•	Responsive design that works on mobile devices
+•	Form fields with appropriate input types (email, phone, etc.)
+•	Visual feedback for form validation errors
+•	Clear call-to-action buttons for proceeding through checkout
+Cart Review:
+•	Display itemized cart contents with images, names, quantities, and prices
+•	Allow quantity adjustments directly from checkout screen
+•	Show cart summary with subtotal, shipping costs, and final total
+•	Display product availability status for all items
+Shipping Information:
+•	Option to select from saved addresses with radio buttons
+•	Form for entering new address with properly labeled fields
+•	Address fields: Name, Street Address, City, State/Province, Country, ZIP/Postal Code, Phone
+•	Ability to save new address to account for future use
+Discount Application:
+•	Field to enter coupon code with "Apply" button
+•	Clear success message showing discount amount when valid
+•	Error message for invalid or expired coupons
+•	Display of savings amount in order summary
+Exception Handling:
+•	Invalid address: "Please provide a complete shipping address"
+•	Out of stock during checkout: "Some items in your cart are no longer available"
+•	Minimum order requirement: "A minimum order of $10 is required to proceed"
+•	Form validation: Field-specific error messages displayed beneath each field
+4.2 Payment Methods
+Description: The system shall provide multiple secure payment options to accommodate different customer preferences.
+UI Requirements:
+•	Clear payment method selection with visual icons
+•	Secure form fields for credit card information
+•	Prominent display of security measures and compliance badges
+•	Simple toggle between different payment options
+Supported Methods:
+•	PayPal integration with Express Checkout
+•	Credit/debit card processing with Stripe
+•	Cash on Delivery for eligible locations
+Security Requirements:
+•	Secure form fields for sensitive information
+•	No storage of complete card details
+•	Clear privacy and security policy accessible during checkout
+Payment Processing:
+•	Real-time payment authorization for digital payments
+•	Clear confirmation message after successful payment
+•	Processing indicator during payment authorization
+•	Automatic receipt generation for completed payments
+Error Handling:
+•	Payment declined: "Your payment could not be processed. Please check your details or try another payment method"
+•	Connection error: "We couldn't connect to the payment service. Please try again"
+•	Invalid card: "Please check your card information and try again"
+•	Error recovery: Keep checkout information when returning from a failed payment
+4.3 Order Management
+Description: The system shall process and track orders efficiently from placement through fulfillment.
+UI Requirements:
+•	Order confirmation page with summary and unique order number
+•	Email confirmation with order details
+•	Order history section in user account area
+•	Order detail view with status tracking
+Order Confirmation:
+•	Display order number, purchase date, and payment status
+•	Show complete order summary with all items purchased
+•	Provide estimated delivery timeframe
+•	Include link to order tracking
+Order Status Tracking:
+•	Display current order status (Processing, Shipped, Delivered, etc.)
+•	Show order status history with timestamps
+•	Provide tracking information when available
+•	Allow cancellation or modification within time constraints
+Exception Handling:
+•	Failed order creation: "Your order couldn't be processed. Please try again"
+•	Payment verification pending: "Your order is being processed pending payment verification"
+•	Order cancellation: Confirmation dialog with clear consequences explained
+•	Order modification: Clear indication of which modifications are possible based on order status
+5.1 Order History
+Description: The system shall maintain order records for each user, enabling easy access to past purchases.
+UI Requirements:
+•	Clean, organized list view of all orders with clear date grouping
+•	Each order displayed as a card with essential information
+•	Filter options accessible via dropdown menu
+•	Search bar positioned at the top of order history page
+•	Consistent color coding for different order statuses
+History Display:
+•	Present chronological list of orders (most recent first)
+•	Show key information for each order (order ID, date, total amount, status)
+•	Implement simple filtering by status (Active, Delivered, Cancelled, Refunded)
+•	Support basic search functionality by order number
+•	Allow sorting by date and price
+Order Details:
+•	Display complete order information (items, quantities, prices)
+•	Show payment details (method, transaction ID)
+•	Present shipping information (address, estimated delivery date)
+•	Include current status with visual indication
+•	Display seller information for each product with link to shop
+Exception Handling:
+•	When no orders exist: "You haven't placed any orders yet. Start shopping now!"
+•	When filtered results are empty: "No orders match your selected filters"
+•	When order details cannot be retrieved: "Order details temporarily unavailable. Please try again later"
+•	When search returns no results: "No orders found matching '[search term]'"
+5.2 Order Tracking
+Description: The system shall provide visibility into order status and location.
+UI Requirements:
+•	Prominent status indicator on order details page
+•	Visual progress bar/timeline showing order journey
+•	Status updates highlighted with appropriate colors
+•	Estimated delivery date displayed prominently
+•	Easy navigation between tracking and order details
+Status Tracking:
+•	Define clear order statuses in system:
+o	Processing
+o	Transferred to delivery partner
+o	Shipping
+o	Received
+o	On the way
+o	Delivered
+•	Display current status prominently on order details page
+•	Show estimated delivery date based on shipping method
+•	Provide visual tracking timeline showing order progress
+Notifications:
+•	Send email notifications for key status changes:
+o	Order confirmation
+o	Shipping confirmation
+o	Delivery confirmation
+•	Include order ID and link to order details in each notification
+•	Use clear, concise language in notification messages
+Exception Handling:
+•	When tracking information is unavailable: "Tracking information not yet available"
+•	When delivery is delayed: "Your delivery is running slightly behind schedule"
+•	When order status hasn't changed for an extended period: "This order may be experiencing delays"
+•	When tracking system encounters errors: "We're having trouble retrieving the latest tracking information"
+5.3 Refund Processing
+Description: The system shall provide a process for handling refund requests and processing approved refunds.
+UI Requirements:
+•	"Request Refund" button visible only on delivered orders
+•	Simple, step-based refund request form
+•	Clear status indicators for refund status
+•	Confirmation dialogs for important actions
+•	Feedback messages after each successful action
+Refund Requests:
+•	Allow refund requests only for delivered orders within 7 days of delivery
+•	Require reason selection from predefined options:
+o	Item damaged/defective
+o	Wrong item received
+o	Item not as described
+o	Other (with text field)
+•	Support optional comments to explain the issue
+•	Notify seller of new refund request
+Refund Workflow:
+•	Define clear refund statuses:
+o	Requested
+o	Processing refund
+o	Refund Success
+•	Enable seller to review and process refund requests
+•	Update order status when refund is processed
+Refund Payment:
+•	Process refunds through original payment method
+•	Support full refund amounts
+•	Send confirmation email when refund is processed
+Exception Handling:
+•	When refund period has expired: "Refunds can only be requested within 7 days of delivery"
+•	When refund is already in progress: "A refund request is already being processed for this order"
+•	When system cannot process refund request: "We couldn't process your refund request. Please contact customer support"
+•	When user attempts multiple refund requests: "You've already submitted a refund request for this order"
+6.1 Review Creation
+Description: The system shall enable users to submit product reviews and ratings after purchase and delivery.
+UI Requirements:
+•	Simple, clean review form with visual star rating selector
+•	Clear submission button with contrasting color
+•	Progress indicator showing which steps are complete
+•	Mobile-responsive design that works on all screen sizes
+Review Eligibility:
+•	Allow review submission only after order status changes to "Delivered"
+•	Limit one review per user per purchased product
+•	Reviews can be submitted within 30 days after delivery
+Rating System:
+•	Implement 5-star rating scale with whole stars
+•	Require rating selection for all reviews
+•	Display clear visual star icons for rating selection
+•	Rating selection must be prominently displayed
+Review Content:
+•	Allow text reviews between 10-500 characters
+•	Require minimum 10-character review for submissions
+•	Include optional "Review Title" field (max 50 characters)
+•	Provide simple text field with clear character count display
+Media Attachments:
+•	Media attachments are optional (not required)
+•	Allow users to upload up to 3 images with their review
+•	Support common image formats (JPG, PNG)
+•	Include option to remove images before final submission
+Exception Handling:
+•	Invalid submission: "Please complete all required fields marked with *"
+•	Rating missing: "Please select a star rating before submitting"
+•	Review too short: "Please write at least 10 characters in your review"
+•	Already reviewed: "You have already reviewed this product"
+•	Review period expired: "The review period for this product has ended"
+6.2 Review Management
+Description: The system shall display, organize, and manage product reviews to help inform purchasing decisions.
+UI Requirements:
+•	Reviews displayed in clean, card-based layout
+•	Clear visual separation between reviews
+•	Consistent star rating display
+•	Mobile-friendly review display with proper text wrapping
+•	Easily accessible sorting and filtering controls
+Review Display:
+•	Show reviews on product detail pages with pagination (5 per page)
+•	Display reviews chronologically (newest first) with date stamps
+•	Show reviewer name and profile image (if available)
+•	Include review rating, text content, and any images
+•	Allow images in reviews to be enlarged when clicked
+Rating Calculation:
+•	Calculate average product rating from all submitted reviews
+•	Display average rating prominently near product title
+•	Show total number of reviews next to average rating
+•	Update average rating automatically when new reviews are submitted
+Filtering and Sorting:
+•	Allow sorting by date (newest/oldest) and rating (high to low, low to high)
+•	Enable filtering by rating level (e.g., show only 4-5 star reviews)
+•	Provide option to filter by "reviews with images" only
+•	Clear visual indicators for active filters
+User Management:
+•	Enable users to edit their own reviews within 7 days of submission
+•	Allow users to delete their own reviews at any time
+•	Show edit status on modified reviews ("Edited on [date]")
+Moderation Features:
+•	Automated detection of inappropriate content
+•	Allow administrators to remove inappropriate reviews
+•	Implement reporting mechanism for inappropriate reviews via "Report" button
+Exception Handling:
+•	No reviews: "This product doesn't have any reviews yet. Be the first to leave a review!"
+•	Failed loading reviews: "Unable to load reviews at this time. Please try again later"
+•	Image loading failure: Show placeholder image with "Image unavailable" text
+•	Filter with no results: "No reviews match your current filter selections"
+7.1 User-Seller Communication
+Description: The system shall provide a secure messaging interface enabling direct communication between users and sellers.
+UI Requirements:
+•	Clean chat interface with clear visual distinction between sent and received messages
+•	Prominent send button and message input field
+•	Image attachment button with preview functionality
+•	Access to messaging from product pages and order details
+•	Message bubbles with appropriate colors for sender and receiver
+•	Scrollable message history with newest messages at bottom
+Messaging Interface:
+•	Implement intuitive chat interface accessible from product pages and user dashboard
+•	Support text messages up to 500 characters per message
+•	Enable image attachment (maximum 3 images per message)
+•	Display conversation history with clear visual separation between sender and recipient
+•	Show product information when conversation is initiated from a product page
+Message Features:
+•	Allow plain text messaging with emoji support
+•	Enable image sharing for product questions or issues
+•	Show "Message sent" confirmation when message is delivered
+•	Allow users to view seller's shop information from chat interface
+Activity Status:
+•	Display online/offline status of participants (green dot for online)
+•	Show "Active now" for currently online participants
+•	Show last active timestamp for offline participants (e.g., "Last seen 2 hours ago")
+Timestamps and Notifications:
+•	Timestamp all messages in user's local time format
+•	Display notification badge in header for unread messages
+•	Send email notifications for unread messages (opt-out available)
+•	Show unread message count in site navigation
+Exception Handling:
+•	Empty message: "Please enter a message before sending"
+•	Connection issues: "Message will be sent when connection is restored"
+•	Blocked user: "You cannot send messages to this seller"
+•	Image too large: "Image exceeds maximum size limit (5MB)"
+•	Account required: "Please log in to send messages"
+7.2 User Inbox
+Description: The system shall provide a centralized inbox for users to manage all their conversations and communications.
+UI Requirements:
+•	Two-panel interface with conversation list on left, messages on right
+•	Clear navigation between conversations
+•	Visual indicators for unread messages
+•	Search bar at top of conversation list
+•	Back button to return to previous screen
+•	Mobile-responsive design that adapts to different screen sizes
+Inbox Organization:
+•	List all conversations with preview of last message
+•	Organize conversations by seller/shop name
+•	Sort conversations by most recent activity by default
+•	Show product thumbnail for product-related conversations
+Visual Indicators:
+•	Highlight conversations with unread messages in bold
+•	Display unread message count per conversation
+•	Show notification dot in navigation when new messages arrive
+•	Show seller profile image next to their conversation
+Filtering and Search:
+•	Enable filtering by unread messages
+•	Provide search functionality to find specific conversations
+•	Allow filtering by seller name
+Management Features:
+•	Enable deletion of conversations (with confirmation)
+•	Provide option to block sellers if needed
+•	Allow reporting of inappropriate messages with reason selection
+Exception Handling:
+•	Empty inbox: "You don't have any messages yet. Start shopping to connect with sellers!"
+•	Search with no results: "No conversations match your search"
+•	Message deletion error: "Could not delete conversation. Please try again"
+•	Slow connection: Show loading indicator during message retrieval
+•	Failed to load conversations: "Could not load your conversations. Please refresh the page"
+8.1 Event Browsing
+Description: The system shall showcase time-limited promotional events to users, highlighting special deals and discounts.
+UI Requirements:
+•	Event carousel with clear navigation controls on homepage
+•	Visually appealing event cards with prominent discount information
+•	Color-coded countdown timers (green for >24 hours, orange for <24 hours)
+•	Responsive design that adapts to different screen sizes
+•	Clear call-to-action buttons on event banners
+Home Page Integration:
+•	Display 2-3 active promotional events in a dedicated section on home page
+•	Show event name, banner image, and discount percentage
+•	Implement countdown timers for events showing days, hours, and minutes remaining
+•	Enable direct navigation from event banner to event details page
+Event Listing:
+•	Provide dedicated "Events" page accessible from main navigation
+•	Display events in grid view with sorting options (newest, ending soon)
+•	Support filtering by category and discount percentage
+•	Show pagination for events (6 per page)
+Event Details:
+•	Display comprehensive event information (name, description)
+•	Show clear start and end dates with countdown timer
+•	List products included in the event with original and discounted prices
+•	Allow adding event products directly to cart or wishlist
+Price Presentation:
+•	Show original prices with strikethrough and discounted prices in bold
+•	Display percentage discount prominently on product images
+•	Show "Sale ends in [time]" for products in active events
+Exception Handling:
+•	When no events are active: "No active events at this time. Check back soon for new promotions!"
+•	When event has ended: "This event has ended. Browse our current promotions for more deals"
+•	When event page fails to load: "Unable to load events. Please refresh the page"
+•	During slow connection: Show loading indicator with "Loading events..." message
+8.2 Coupon System
+Description: The system shall provide functionality for applying discount coupons during the checkout process.
+UI Requirements:
+•	Clear coupon input field with "Apply" button
+•	Visual confirmation when coupon is successfully applied
+•	Simple method to remove applied coupon
+•	Highlighted discount amounts in order summary
+•	Error messages displayed directly below coupon field
+Coupon Application:
+•	Provide coupon code input field during checkout with clear label
+•	Support alphanumeric coupon codes (case-insensitive)
+•	Process coupon validation when "Apply" button is clicked
+•	Allow only one coupon per order
+•	Present "Remove Coupon" option when coupon is applied
+Validation Rules:
+•	Verify coupon code exists in database
+•	Check that coupon has not expired
+•	Confirm minimum order value requirements are met
+•	Verify coupon is applicable to items in cart
+Discount Calculation:
+•	Support percentage discounts (shown as X% off)
+•	Apply discount to eligible products as specified by coupon
+•	Calculate and display savings amount in order summary
+•	Recalculate order total immediately after coupon application
+Discount Presentation:
+•	Show original subtotal with strikethrough when coupon applied
+•	Display discount amount in green text
+•	Highlight new total amount after discount
+•	Show name of applied coupon code
+Error Handling:
+•	Invalid coupon code: "The coupon code you entered is invalid or has expired"
+•	Minimum purchase not met: "This coupon requires a minimum purchase of $XX"
+•	Coupon already used: "You have already used this coupon"
+•	Incompatible items: "This coupon cannot be applied to items in your cart"
+•	When applying multiple coupons: "Only one coupon can be applied per order"
+9.1 Seller Registration
+Description: The system shall provide a registration process for users wanting to become sellers on the platform.
+UI Requirements:
+•	Clean, step-based registration form with progress indicator
+•	Clear field labels and validation messages
+•	Visual indicators for required fields (*)
+•	Password strength meter
+•	Image upload preview
+•	Mobile-responsive design
+Required Information:
+•	Shop name (3-50 characters)
+•	Email address (valid email format)
+•	Phone number (valid format)
+•	Physical address (street, city, state/province, country)
+•	ZIP/Postal code
+•	Password (minimum 8 characters with at least 1 uppercase, 1 lowercase, 1 number)
+•	Profile/shop image (JPG, PNG, maximum 2MB)
+Verification Process:
+•	Send verification email after registration form submission
+•	Verify email address through secure one-time link
+•	Support resending verification email if needed
+Exception Handling:
+•	Invalid shop name: "Shop name must be between 3-50 characters and contain no special characters"
+•	Invalid email: "Please enter a valid email address"
+•	Invalid phone: "Please enter a valid phone number"
+•	Missing required fields: "Please complete all required fields marked with *"
+•	Email already in use: "This email is already registered. Please use a different email or log in"
+•	Password too weak: "Password must be at least 8 characters with uppercase, lowercase and numbers"
+9.2 Shop Management
+Description: The system shall provide tools for sellers to customize and manage their virtual storefront.
+UI Requirements:
+•	Dashboard layout with clear navigation tabs
+•	Visual preview of shop appearance
+•	Easy-to-use image upload controls
+•	WYSIWYG editor for shop description
+•	Responsive design for all screen sizes
+Shop Information Management:
+•	Update shop name and logo
+•	Upload shop banner image
+•	Write shop description (up to 1000 characters)
+•	Manage contact information (email, phone)
+•	Set business hours
+•	Add shop address information
+Performance Metrics:
+•	Display key metrics dashboard:
+o	Total sales (daily, weekly, monthly)
+o	Average order value
+o	Top-selling products
+•	Show simple charts for sales trends
+Financial Overview:
+•	Display current balance
+•	Show pending payments
+•	List recent transactions
+Exception Handling:
+•	Invalid shop name: "Shop name must be between 3-50 characters"
+•	Image upload failure: "Unable to upload image. Please try again with a smaller file (max 2MB)"
+•	Unsaved changes: "You have unsaved changes. Are you sure you want to leave this page?"
+•	Connection issues: "Changes saved locally and will update when connection is restored"
+9.3 Product Management
+Description: The system shall enable sellers to create and manage their product listings effectively.
+UI Requirements:
+•	Clean product creation form with logical sections
+•	Image upload area with thumbnails
+•	Rich text editor for product description
+•	Category selection dropdown/tree
+•	Preview functionality before publishing
+Product Creation:
+•	Enter product name (5-100 characters)
+•	Write product description
+•	Select product category
+•	Set pricing (original and optional discount price)
+•	Enter stock quantity
+•	Upload product images (up to 5 images)
+•	Add product tags for searchability
+Inventory Management:
+•	Track stock levels
+•	Receive low stock notifications
+•	Update stock quantities
+•	Temporarily hide out-of-stock products
+Product Editing:
+•	Modify all product attributes
+•	Update product images
+•	Change product status (active/inactive)
+•	Duplicate existing products
+Exception Handling:
+•	Missing required fields: "Please complete all required fields marked with *"
+•	Invalid price format: "Please enter a valid price"
+•	Image upload issues: "Image upload failed. Try using a smaller image (max 2MB)"
+•	Insufficient stock: "Stock quantity must be at least 1 for active products"
+•	Product name too short: "Product name must be at least 5 characters"
+9.4 Event Management
+Description: The system shall allow sellers to create and manage time-limited promotional events for their products.
+UI Requirements:
+•	Event creation form with clear sections
+•	Date and time pickers with visual calendar
+•	Product selection interface with search functionality
+•	Event preview before publishing
+•	Event list with status indicators (upcoming, active, ended)
+Event Creation:
+•	Enter event name
+•	Write event description
+•	Select start and end dates/times
+•	Set discount amount or percentage
+•	Upload event banner image
+•	Select products to include in event
+Event Management:
+•	View all events (active, upcoming, past)
+•	Monitor event performance (views, sales)
+•	Edit upcoming events
+•	Extend active event end date if needed
+Exception Handling:
+•	Invalid date range: "End date must be after start date"
+•	No products selected: "Please select at least one product for this event"
+•	Event name missing: "Please enter a name for your event"
+•	Invalid discount: "Discount amount must be greater than 0 and less than product price"
+•	Scheduling conflict: "Some products are already part of another event during this time period"
+9.5 Order Processing
+Description: The system shall provide tools for sellers to receive, review, and fulfill customer orders efficiently.
+UI Requirements:
+•	Orders dashboard with filtering options
+•	Color-coded order status indicators
+•	Detailed order view with all relevant information
+•	Easy-to-use status update controls
+•	Print-friendly order summary
+Order Notification:
+•	Display new orders at top of orders list
+•	Show notification badge with count of new orders
+•	Allow sorting orders by date, status, or amount
+Order Details View:
+•	Display complete order information:
+o	Order ID and date
+o	Customer name and shipping address
+o	Product details (name, quantity, price)
+o	Payment status
+•	Allow printing of packing slip
+Status Management:
+•	Update order status through dropdown menu:
+o	Processing
+o	Shipped
+o	Delivered
+o	Cancelled
+•	Add tracking information for shipped orders
+•	Send automatic notifications to customer when status changes
+Exception Handling:
+•	Invalid tracking number: "Please enter a valid tracking number"
+•	Missing required fields: "Please complete all required fields before updating status"
+•	Connection issues: "Status change saved locally and will update when connection is restored"
+•	Restricted status change: "Orders that have been delivered cannot be changed back to Processing"
+9.6 Discount Management
+Description: The system shall enable sellers to create and manage various discount offers through coupon codes.
+UI Requirements:
+•	Simple coupon creation form with clear fields
+•	Dropdown menus for discount types
+•	Date pickers for validity period
+•	Active coupon list with status indicators
+•	Search and filter functionality for coupons
+Coupon Creation:
+•	Enter coupon code (or generate automatically)
+•	Select discount type (percentage or fixed amount)
+•	Set discount value
+•	Specify minimum purchase amount (optional)
+•	Set start and end dates
+•	Limit number of uses (optional)
+Coupon Management:
+•	View all coupons with status (active, expired, scheduled)
+•	Edit coupons that haven't been used
+•	Deactivate coupons before expiration if needed
+•	Duplicate existing coupons to create similar offers
+Exception Handling:
+•	Invalid coupon code: "Coupon code must be 5-20 alphanumeric characters"
+•	Invalid discount value: "Discount must be greater than 0"
+•	Invalid date range: "End date must be after start date"
+•	Duplicate code: "This coupon code already exists. Please use a different code"
+•	Missing required fields: "Please complete all required fields marked with *"
+9.7 Financial Management
+Description: The system shall provide tools for sellers to monitor revenue and manage withdrawals securely.
+UI Requirements:
+•	Financial dashboard with summary metrics
+•	Simple charts for revenue visualization
+•	Clear withdrawal request form
+•	Transaction history with filtering options
+•	Print-friendly financial reports
+Balance Overview:
+•	Display current available balance
+•	Show pending balance (from recent sales)
+•	List recent transactions
+•	Provide simple revenue graphs
+Withdrawal Process:
+•	Request withdrawal through simple form
+•	Enter or select bank account information
+•	Specify withdrawal amount
+•	Review transaction details before confirmation
+•	Receive confirmation after successful request
+Withdrawal Tracking:
+•	View pending withdrawal requests
+•	Check status of previous withdrawals
+•	Receive notifications about withdrawal status
+Exception Handling:
+•	Insufficient balance: "Your available balance is less than the requested amount"
+•	Minimum withdrawal: "Minimum withdrawal amount is $50"
+•	Missing bank details: "Please provide complete banking information"
+•	Connection issues: "Withdrawal request saved locally and will be submitted when connection is restored"
+•	Verification required: "For security purposes, please verify your identity before making this withdrawal"
+10.1 User Management
+Description: The system shall provide administrators with tools to manage user accounts across the platform.
+UI Requirements:
+•	Clean tabular display of user information with consistent styling
+•	Easy-to-use filtering controls positioned at top of listing
+•	Clearly labeled action buttons for each user entry
+•	Confirmation dialogs for critical actions
+•	Search bar prominently positioned at top of page
+User Listing and Search:
+•	Display user list with pagination (15 users per page)
+•	Show key user information: username, email, registration date, status
+•	Support filtering by registration date and account status
+•	Implement search functionality by email, name, or user ID
+•	Allow sorting by registration date, name, or activity level
+User Profile Access:
+•	View user profile information in organized sections
+•	Access user's order history with links to order details
+•	View user's communication history with sellers
+•	Display user account status with visual indicators
+Account Modification:
+•	Edit basic user information through simple form interface
+•	Reset user passwords with secure link generation
+•	Add internal notes visible only to administrators
+•	View change history log for each user
+Role Management:
+•	Change user role through dropdown selection (Regular user, Seller)
+•	Show clear visual indicators of current user role
+•	Provide confirmation dialog for role changes
+Account Actions:
+•	Suspend accounts with duration selection
+•	Delete accounts with confirmation dialog
+•	Unlock temporarily locked accounts with single button
+•	Clear evidence of all actions in audit log
+Exception Handling:
+•	Warning when attempting to delete account with pending orders: "Cannot delete user with pending orders"
+•	Confirmation required for sensitive operations: "Please confirm this action by typing 'DELETE' to continue"
+•	Error message when action fails: "Unable to complete action. Please try again or contact IT support"
+•	Notification when another administrator is editing the same user: "This user is currently being edited by [admin name]"
+10.2 Seller Management
+Description: The system shall provide tools for administrators to oversee and manage seller accounts ensuring platform quality standards.
+UI Requirements:
+•	Tabular view of seller accounts with key metrics
+•	Status indicators with color coding (green active, yellow pending, red suspended)
+•	Quick action buttons for common tasks
+•	Expandable rows to view additional seller details
+•	Filter panel with clear controls
+Seller Listing and Search:
+•	Display seller list with pagination (15 sellers per page)
+•	Show key seller information: shop name, seller name, email, rating, status
+•	Filter by registration date and account status
+•	Search by shop name, seller name, or email
+•	Sort by registration date or rating
+Verification Process:
+•	Display pending verification requests in dedicated section
+•	View submitted verification documents with download option
+•	Approve or reject applications with reason selection
+•	Request additional documentation with customizable message template
+Performance Monitoring:
+•	Display key performance indicators for each seller:
+o	Average product rating (out of 5 stars)
+o	Order fulfillment rate (percentage)
+o	Response time to customer inquiries (hours)
+•	View basic performance trends with simple graph
+Account Actions:
+•	Approve new seller applications with single button
+•	Reject applications with reason selection
+•	Suspend seller accounts with duration selection
+•	Send direct message to seller from admin interface
+Exception Handling:
+•	Warning when attempting to delete seller with pending orders: "Cannot delete seller with active orders"
+•	Confirmation dialog for seller suspension: "Are you sure you want to suspend this seller account?"
+•	Error message for failed verification: "Verification documents could not be processed. Please try again"
+•	Alert for suspicious seller behavior: "This seller account has been flagged for unusual activity"
+10.3 Product and Event Management
+Description: The system shall provide administrators with oversight capabilities for all products and promotional events on the platform.
+UI Requirements:
+•	Grid view of products with thumbnail images
+•	Filter panel with clear category selections
+•	Search bar with category selection dropdown
+•	Product detail view with tabbed sections
+•	Action buttons consistently positioned
+Product Overview:
+•	Display product list with pagination (20 products per page)
+•	Show product image, name, price, seller, and status
+•	Filter by category, price range, and status
+•	Search by product name or seller
+•	View detailed product information with all images
+Product Moderation:
+•	Review flagged products in priority queue
+•	Hide or restore products with toggle switch
+•	Remove violating products with reason selection
+•	Notify sellers of moderation actions with template messages
+Event Monitoring:
+•	View all promotional events in calendar or list view
+•	Filter events by category, seller, or date range
+•	Review event details including banner images
+•	Track basic performance metrics for events
+Content Policy Enforcement:
+•	Flag products that may violate policies
+•	Apply standardized reason codes for violations
+•	Track seller compliance history across products
+•	Send automated warnings for minor violations
+Exception Handling:
+•	Warning for bulk actions: "You are about to modify 45 products. Continue?"
+•	Confirmation for product removal: "Are you sure you want to remove this product?"
+•	Error message for incomplete moderation: "Please select a reason for this action"
+•	Notice when product is already under review: "This product is already being reviewed by [admin name]"
+10.4 Financial Oversight
+Description: The system shall provide administrators with tools to monitor platform financials and manage seller withdrawal requests.
+UI Requirements:
+•	Dashboard with key financial metrics
+•	Simple charts showing revenue trends
+•	Clear tabular display of withdrawal requests
+•	Color-coded status indicators
+•	Detailed transaction view with expandable sections
+Financial Dashboard:
+•	Display platform revenue metrics in cards at top of dashboard
+•	Show revenue data for current day, week, and month
+•	Display simple bar chart of revenue trends
+•	Show transaction volume statistics
+Withdrawal Request Management:
+•	Display queue of pending withdrawal requests
+•	Show request date, seller name, amount, and status
+•	Sort requests by submission date or amount
+•	View seller details and withdrawal method information
+•	Approve or reject requests with single button
+Verification Process:
+•	Review seller information before approving withdrawals
+•	Verify withdrawal amount against available balance
+•	See seller's previous withdrawal history
+•	Flag suspicious patterns with visual indicator
+Payment Processing:
+•	Support common payout methods (bank transfer, PayPal)
+•	Track payment status with clear status indicators
+•	Generate transaction records for accounting
+•	Handle basic payment errors with clear messaging
+Exception Handling:
+•	Warning for large withdrawals: "This withdrawal exceeds $1000 and requires additional verification"
+•	Error message for insufficient balance: "Seller has insufficient balance for this withdrawal"
+•	Alert for multiple withdrawals: "This seller has submitted multiple withdrawal requests in the last 24 hours"
+•	Confirmation for rejection: "Please provide a reason for rejecting this withdrawal request"
+10.5 Order Management
+Description: The system shall provide administrators with visibility and control over orders placed on the platform.
+UI Requirements:
+•	Clear tabular order listing with key information
+•	Status badges with intuitive color coding
+•	Expandable order details with product images
+•	Timeline view of order status changes
+•	Clear separation between order data and actions
+Order Overview:
+•	Display orders with pagination (20 orders per page)
+•	Show order ID, customer name, date, total, and status
+•	Filter by date range and order status
+•	Search by order ID or customer name
+•	View detailed order information with items and addresses
+Order Monitoring:
+•	Dashboard showing order status distribution as pie chart
+•	Highlight delayed orders with warning indicators
+•	Track basic fulfillment metrics with visual indicators
+•	Generate simple alerts for orders requiring attention
+Order Intervention:
+•	View complete order history with status changes
+•	Modify shipping address when necessary
+•	Cancel orders with reason selection
+•	Add internal notes visible only to administrators
+Customer Support Tools:
+•	View customer messages related to specific orders
+•	Send messages to customers about their orders
+•	Document support interactions in simple note format
+•	Access basic customer contact information
+Exception Handling:
+•	Warning when canceling paid orders: "This order has been paid. Refund will be processed automatically"
+•	Confirmation for order modification: "You are about to change order details. Continue?"
+•	Error message when modification fails: "Unable to update order. Please try again"
+•	Alert for potential fraud: "This order has been flagged for unusual payment activity"

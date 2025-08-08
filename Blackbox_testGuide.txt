@@ -1,0 +1,317 @@
+npm test -- __tests__/controller/shop.test.js
+npm test -- --coverage
+
+
+PART 1: E-Shop Application Modules for Black Box Functional Testing
+1. Authentication Module (AUTH)
+Module Name:
+Authentication System
+Module Description:
+Handles user registration, login, and account management for both regular users and sellers.
+Main Screens/Components:
+•	Login screen
+•	Signup screen
+•	Account activation screen
+•	Password recovery screen
+•	Seller registration screen
+•	Seller login screen
+Key Functionalities:
+•	User registration with email verification
+•	User login with credentials
+•	Password recovery
+•	Seller account creation and login
+•	Session management (remember me)
+User Roles:
+•	Unauthenticated visitors
+•	Regular users
+•	Sellers
+•	Admins
+Preconditions:
+•	Web application access
+•	Valid email for registration
+2. User Profile Module (PROF)
+Module Name:
+User Profile Management
+Module Description:
+Allows users to view and update their personal information, addresses, and other account settings.
+Main Screens/Components:
+•	Profile overview page
+•	Profile information update form
+•	Address management section
+•	Password change form
+•	Avatar upload interface
+Key Functionalities:
+•	View profile information
+•	Update personal details (name, email, phone)
+•	Change password
+•	Upload/change profile picture
+•	Add/edit/delete addresses
+•	View order history
+User Roles:
+•	Authenticated users
+Preconditions:
+•	Successful login
+3. Product Browsing Module (PROD)
+Module Name:
+Product Browsing and Discovery
+Module Description:
+Enables users to browse, search, and filter products available in the store.
+Main Screens/Components:
+•	Homepage with featured products
+•	Category browsing pages
+•	Search results and Product filtering interface
+•	Events/special offers page
+Key Functionalities:
+•	View product listings
+•	Browse categories
+•	Search for products
+•	Filter products by attributes
+•	View special offers and events
+•	Navigate between product pages
+User Roles:
+•	All users (authenticated and unauthenticated)
+Preconditions:
+•	Web application access
+4. Product Detail Module (PDET)
+Module Name:
+Product Detail View
+Module Description:
+Displays detailed information about a specific product and allows users to interact with it.
+Main Screens/Components:
+•	Product detail page
+•	Product images gallery
+•	Product reviews section
+•	Related/suggested products section
+Key Functionalities:
+•	View detailed product information
+•	See product images
+•	Read product reviews
+•	Add product to cart
+•	Add product to wishlist
+•	Select product variants (if applicable)
+•	View similar/related products
+•	Contact seller about product
+User Roles:
+•	All users (authenticated and unauthenticated)
+Preconditions:
+•	Access to product listing page
+5. Shopping Cart Module (CART)
+Module Name:
+Shopping Cart Management
+Module Description:
+Handles the user's shopping cart functionality, allowing them to add, remove, and modify items.
+Main Screens/Components:
+•	Cart popup/sidebar
+•	Cart page
+•	Quantity adjustment controls
+Key Functionalities:
+•	Add products to cart
+•	Remove products from cart
+•	Update product quantities
+•	View cart summary and total
+•	Proceed to checkout
+User Roles:
+•	All users (authenticated and unauthenticated)
+Preconditions:
+•	Web application access
+•	Available products in store
+6. Wishlist Module (WISH)
+Module Name:
+Wishlist Management
+Module Description:
+Allows users to save products to a wishlist for future consideration.
+Main Screens/Components:
+•	Wishlist popup/sidebar
+•	Wishlist page
+Key Functionalities:
+•	Add products to wishlist
+•	Remove products from wishlist
+•	Move products from wishlist to cart
+•	View saved items
+User Roles:
+•	Authenticated users
+Preconditions:
+•	User account and login
+7. Checkout Module (CHCK)
+Module Name:
+Checkout Process
+Module Description:
+Guides users through the process of finalizing their purchase, including shipping, payment, and order confirmation.
+Main Screens/Components:
+•	Checkout page with shipping information
+•	Payment method selection page
+•	Order summary section
+•	Coupon/discount code entry
+•	Order success page
+Key Functionalities:
+•	Enter shipping information
+•	Select saved addresses
+•	Apply discount codes
+•	Choose payment method
+•	Complete payment (card, PayPal)
+•	Place order
+•	Receive order confirmation
+User Roles:
+•	Authenticated users
+Preconditions:
+•	User account and login
+•	Items in shopping cart
+8. Order Management Module (ORDR)
+Module Name:
+Order Management
+Module Description:
+Allows users to view, track, and manage their orders after purchase.
+Main Screens/Components:
+•	Order history page
+•	Order details page
+•	Order tracking page
+•	Review submission form
+Key Functionalities:
+•	View order history
+•	View detailed order information
+•	Track order status
+•	Request refunds
+•	Submit product reviews
+•	Contact seller about order
+User Roles:
+•	Authenticated users
+Preconditions:
+•	User account and login
+•	At least one placed order
+9. User Messaging Module (MSG)
+Module Name:
+Messaging System
+Module Description:
+Provides communication channels between users, sellers, and customer support.
+Main Screens/Components:
+•	User inbox
+•	Conversation view
+•	Message composition interface
+Key Functionalities:
+•	View message history
+•	Send messages to sellers
+•	Receive messages
+•	Upload images in messages
+•	See online status
+User Roles:
+•	Authenticated users
+•	Sellers
+•	Admin
+Preconditions:
+•	User account and login
+10. Seller Dashboard Module (SDSH)
+Module Name:
+Seller Dashboard
+Module Description:
+Allows sellers to manage their store, products, orders, and customer interactions.
+Main Screens/Components:
+•	Seller dashboard overview
+•	Product management interface
+•	Order management interface
+•	Event creation and management
+•	Coupon management
+•	Withdraw money interface
+•	Shop settings page
+•	Seller inbox
+Key Functionalities:
+•	View sales analytics
+•	Manage products (CRUD operations)
+•	Process orders
+•	Create/manage special events
+•	Create/manage discount coupons
+•	Handle refund requests
+•	Update shop information
+•	Withdraw earnings
+•	Communicate with customers
+User Roles:
+•	Sellers
+Preconditions:
+•	Seller account and login
+11. Admin Dashboard Module (ADSH)
+Module Name:
+Admin Dashboard
+Module Description:
+Provides administrative functions for managing the entire marketplace.
+Main Screens/Components:
+•	Admin dashboard overview
+•	User management interface
+•	Seller management interface
+•	Product management interface
+•	Order management interface
+•	Event management interface
+•	Withdrawal request management
+Key Functionalities:
+•	View platform analytics
+•	Manage users (view, delete)
+•	Manage sellers (view, delete)
+•	Monitor products
+•	Monitor orders
+•	Handle withdrawal requests
+•	Access platform settings
+User Roles:
+•	Admin
+Preconditions:
+•	Admin account and login
+12. FAQ/Support Module (HELP)
+Module Name:
+Help and Support
+Module Description:
+Provides help information and support resources for users.
+Main Screens/Components:
+•	FAQ page
+•	Contact support interface
+Key Functionalities:
+•	View frequently asked questions
+•	Get answers to common problems
+•	Contact customer support
+User Roles:
+•	All users (authenticated and unauthenticated)
+Preconditions:
+•	Web application access
+
+
+PART2: Based on the E-Shop Application Modules for Black Box Functional Testing listed above. For each module in my project, please generate test cases following this framework, with particular focus on validating all input fields, checking boundary conditions, and ensuring business rules are properly enforced. 
+The number of test cases should be around 7-12 test cases for a UI (depending on the core functionalities in that UI) and write the test case description detailedly (the way the user interacts to test it), should be mostly GUI test cases, a few general functionality test cases and 1 edge case.
+1. Test Case Overview:
+   - Test Case ID: Unique identifier for each test case (e.g., FT_001, FT_002)
+   - Test Purpose: Clear description of what is being tested
+   - Test Steps: Detailed step-by-step instructions
+   - Expected Results: Precise description of what should happen
+   - Prerequisites: Any preconditions needed before executing the test
+
+2. GUI/Interface Testing:
+   - Layout verification: Check positioning, alignment, font consistency, and spacing
+   - Responsive design: Ensure interface works properly with Ctrl- and Ctrl+ commands
+   - Tab order: Verify logical tab order (left to right, top to bottom) and reverse with Shift+Tab
+   - Default focus: Confirm cursor position on initial field that can be edited
+   - Enter key behavior: Test functionality when pressing Enter on different elements
+   - Button state consistency: Verify enabled/disabled states are appropriate
+   - Spelling and grammar: Check all text for errors
+   - Label consistency: Ensure terminology is consistent across screens
+
+3. Functional Testing:
+   - Form validation:
+     * Required fields validation with * marking
+     * Text/string data validation (max length, case sensitivity, special characters, null handling)
+     * Numeric data validation (max length, boundary values, special character handling)
+     * Date/time validation (format, range, selection methods)
+     * File upload validation (size limits, format restrictions)
+   - Error messaging:
+     * Consistent error message style
+     * User-friendly language with suggestions to resolve
+     * Appropriate validation for boundary conditions
+   - CRUD operations:
+     * Create: Verify successful creation with proper validation and database storage
+     * Read: Confirm accurate display of database information
+     * Update: Test modification with validation and database update verification
+     * Delete: Ensure confirmation prompt and proper database handling
+
+4. Business Logic Testing:
+   - Workflow validation: Test all business rules and scenario paths
+   - Edge cases: Identify and test boundary conditions
+   - Process optimization: Evaluate number of steps for key tasks
+   - Usability: Assess ease of understanding and use
+   - Flexibility: Evaluate ability to modify/extend functionality
+
+Feature/Objective | Test case description | Pre-condition | Test Data | Expected result (Table format)
+

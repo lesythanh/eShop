@@ -1,0 +1,42 @@
+
+
+Functional Test Areas to Cover
+
+User Authentication
+    Registration
+    Login/Logout
+    Password reset
+
+Product Browsing
+    Homepage navigation
+    Product search
+    Category filtering
+    Best selling products
+    Product details view
+
+Shopping Cart
+    Add/remove products
+    Update quantities
+    Apply coupon codes
+
+Checkout Process
+    Address entry
+    Payment method selection
+    Order confirmation
+
+User Profile
+    View/update profile information
+    Order history
+    Track orders
+    Address management
+
+Seller Functions
+    Shop creation
+    Product management
+    Order management
+    Event creation
+
+Admin Functions
+    User management
+    Seller management
+    Order management

@@ -1,0 +1,30 @@
+PART1: Analyze my codebase and help me split it into logical modules for black box functional testing based on user interfaces. For each identified module:
+
+1. First, examine the UI components and screens available to users, ignoring internal implementation details since we're doing black box testing.
+
+2. Identify distinct user flows and functional areas based on:
+   - Main navigation elements (menus, tabs, sidebars)
+   - Primary user journeys through the application
+   - Logically grouped functionality from a user's perspective
+
+3. For each identified module, create a structure that includes:
+   - Module name: A descriptive name for the functional area
+   - Module description: Brief explanation of the module's purpose
+   - Main screens/components: List of UI screens that belong to this module
+   - Key functionalities: Core user actions available in this module
+   - User roles: Which types of users interact with this module
+   - Preconditions: Any required state before testing this module
+
+4. When organizing the modules:
+   - Separate by distinct screens or user interfaces (e.g., "Login Screen", "Dashboard", "Settings Panel")
+   - Create a consistent ID scheme for test cases (e.g., LOGIN_1, DASH_1)
+   - Organize testing in layers: first test general UI elements (layout, responsive design, tab order), then test specific control validations, then test functional workflows
+   - Group related screens that form part of a single user journey or task
+
+5. Focus on breaking down the application into testable units that:
+   - Can be tested independently
+   - Have clear entry and exit points
+   - Represent complete user workflows
+   - Cover all major user-facing functionality
+
+Please provide an outline of the modules with their structure in a hierarchical format that I can use as a framework for writing comprehensive black box test cases.

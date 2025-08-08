@@ -1,0 +1,21 @@
+{
+  "name": "eshop-selenium-tests",
+  "version": "1.0.0",
+  "description": "Selenium tests for Eshop application",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests/**/*.test.js --timeout 30000",
+    "test:auth": "mocha tests/auth/*.test.js --timeout 30000",
+    "test:product": "mocha tests/product/*.test.js --timeout 30000",
+    "test:cart": "mocha tests/cart/*.test.js --timeout 30000", 
+    "setup": "node setup-chromedriver.js"
+  },
+  "dependencies": {
+    "selenium-webdriver": "^4.15.0",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "dotenv": "^16.3.1",
+    "faker": "^5.5.3",
+    "chromedriver": "^136.0.0"
+  }
+}

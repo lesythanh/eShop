@@ -1,0 +1,158 @@
+Authentication Module
+1.	User registration with email verification
+o	Equivalence Partitioning: Efficiently test valid/invalid input combinations
+o	Decision Table Testing: Handle complex registration rules and verification paths
+2.	User login with credentials
+o	Boundary Value Analysis: Test credential limits and restrictions
+o	Error Guessing: Identify security vulnerabilities in authentication
+3.	Password recovery
+o	Use Case Testing: Verify the complete recovery workflow functions correctly
+4.	Seller account creation and login
+o	Decision Table Testing: Address multiple seller account conditions
+o	State Transition Testing: Test different account status transitions
+5.	Session management
+o	State Transition Testing: Validate session states (active/expired/remembered)
+User Profile Module
+6.	View profile information
+o	Use Case Testing: Ensure all profile data displays correctly
+7.	Update personal details
+o	Equivalence Partitioning: Test valid/invalid input scenarios efficiently
+8.	Change password
+o	Boundary Value Analysis: Test password length and complexity requirements
+9.	Upload/change profile picture
+o	Boundary Value Analysis: Test file size and format restrictions
+10.	Add/edit/delete addresses
+o	CRUD Testing: Systematically test all address operations
+11.	View order history
+o	Data-Driven Testing: Verify display with various order types/statuses
+Product Browsing Module
+12.	View product listings
+o	Compatibility Testing: Ensure consistent display across browsers/devices
+13.	Browse categories
+o	State Transition Testing: Verify navigation between category states
+14.	Search for products
+o	Equivalence Partitioning: Test different search query types efficiently
+15.	Filter products by attributes
+o	Decision Table Testing: Test combinations of filter criteria
+16.	View special offers and events
+o	Data-Driven Testing: Verify display with different offer types
+17.	Navigate between product pages
+o	Use Case Testing: Verify navigation paths and pagination functionality
+Product Detail Module
+18.	View detailed product information
+o	Use Case Testing: Ensure all product details display correctly
+19.	See product images
+o	Compatibility Testing: Verify image display across browsers/devices
+20.	Read product reviews
+o	Boundary Value Analysis: Test pagination with varying review quantities
+21.	Add product to cart
+o	State Transition Testing: Verify cart state changes correctly
+22.	Add product to wishlist
+o	State Transition Testing: Verify wishlist state updates correctly
+23.	Select product variants
+o	Decision Table Testing: Test combinations of variant selections
+24.	View similar/related products
+o	Data-Driven Testing: Verify relationships with different product types
+25.	Contact seller about product
+o	Use Case Testing: Verify the complete contact workflow
+Shopping Cart Module
+26.	Add products to cart
+o	State Transition Testing: Verify cart state updates correctly
+27.	Remove products from cart
+o	State Transition Testing: Verify removal affects cart state correctly
+28.	Update product quantities
+o	Boundary Value Analysis: Test minimum/maximum quantity limits
+29.	View cart summary and total
+o	Decision Table Testing: Verify calculations with different pricing scenarios
+30.	Proceed to checkout
+o	Use Case Testing: Verify transition to checkout process
+Wishlist Module
+31.	Add products to wishlist
+o	State Transition Testing: Verify wishlist state updates correctly
+32.	Remove products from wishlist
+o	State Transition Testing: Verify removal affects wishlist correctly
+33.	Move products from wishlist to cart
+o	State Transition Testing: Verify state changes between wishlist and cart
+34.	View saved items
+o	Use Case Testing: Ensure wishlist items display correctly
+Checkout Module
+35.	Enter shipping information
+o	Equivalence Partitioning: Test address validation efficiently
+36.	Select saved addresses
+o	Use Case Testing: Verify address selection functionality
+37.	Apply discount codes
+o	Decision Table Testing: Test various coupon conditions and rules
+38.	Choose payment method
+o	Decision Table Testing: Verify available methods based on conditions
+39.	Complete payment
+o	Use Case Testing: Verify end-to-end payment flows
+o	Error Guessing: Identify payment failure scenarios
+40.	Place order
+o	State Transition Testing: Verify order status changes correctly
+41.	Receive order confirmation
+o	Use Case Testing: Verify confirmation details and notifications
+Order Management Module
+42.	View order history
+o	Data-Driven Testing: Test display with various order types
+43.	View detailed order information
+o	Use Case Testing: Verify all order details display correctly
+44.	Track order status
+o	State Transition Testing: Verify status progression logic
+45.	Request refunds
+o	Decision Table Testing: Test refund eligibility conditions
+46.	Submit product reviews
+o	Equivalence Partitioning: Test valid/invalid review submissions
+47.	Contact seller about order
+o	Use Case Testing: Verify the contact workflow functions correctly
+User Messaging Module
+48.	View message history
+o	Data-Driven Testing: Verify display with various message types
+49.	Send messages to sellers
+o	Boundary Value Analysis: Test message length limitations
+50.	Receive messages
+o	State Transition Testing: Verify notification and read/unread states
+51.	Upload images in messages
+o	Boundary Value Analysis: Test file size and format restrictions
+52.	See online status
+o	State Transition Testing: Verify status indicator changes correctly
+Seller Dashboard Module
+53.	View sales analytics
+o	Data-Driven Testing: Test display with different data scenarios
+54.	Manage products (CRUD operations)
+o	CRUD Testing: Systematically test all product operations
+55.	Process orders
+o	State Transition Testing: Verify order status workflow
+56.	Create/manage special events
+o	Decision Table Testing: Test event creation rules and conditions
+57.	Create/manage discount coupons
+o	Decision Table Testing: Test coupon validation rules
+58.	Handle refund requests
+o	Decision Table Testing: Test refund approval conditions
+59.	Update shop information
+o	Equivalence Partitioning: Test valid/invalid shop details
+60.	Withdraw earnings
+o	Boundary Value Analysis: Test withdrawal amount limits
+61.	Communicate with customers
+o	Use Case Testing: Verify messaging functionality
+Admin Dashboard Module
+62.	View platform analytics
+o	Data-Driven Testing: Test display with various data scenarios
+63.	Manage users
+o	CRUD Testing: Systematically test user management operations
+64.	Manage sellers
+o	CRUD Testing: Systematically test seller management operations
+65.	Monitor products
+o	Use Case Testing: Verify product monitoring functionality
+66.	Monitor orders
+o	State Transition Testing: Verify order status management
+67.	Handle withdrawal requests
+o	Decision Table Testing: Test approval conditions
+68.	Access platform settings
+o	Decision Table Testing: Test setting interactions and dependencies
+FAQ/Support Module
+69.	View frequently asked questions
+o	Compatibility Testing: Verify FAQ display across devices
+70.	Get answers to common problems
+o	Use Case Testing: Verify answer retrieval functionality
+71.	Contact customer support
+o	Equivalence Partitioning: Test valid/invalid support request submissions
