@@ -62,7 +62,7 @@ const ProductsPage = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div>
+        <div className="bg-[#CBA27E]">
           <Header activeHeading={3} />
           <br />
           <br />

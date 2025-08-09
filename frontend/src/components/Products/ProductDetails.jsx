@@ -113,7 +113,7 @@ const ProductDetails = ({ data }) => {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-[#CBA27E]">
       {data ? (
         <div className={`${styles.section} w-[95%] 800px:w-[80%] mx-auto`}>
           <div className="w-full py-5">

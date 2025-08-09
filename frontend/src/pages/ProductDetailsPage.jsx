@@ -29,7 +29,7 @@ const ProductDetailsPage = () => {
   }, [allProducts, allEvents, id, eventData]);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="bg-[#CBA27E] min-h-screen flex flex-col">
       <Header />
       <div className="flex-grow">
         {loading ? (

@@ -23,7 +23,7 @@ const BestSellingPage = () => {
     isLoading ? (
       <Loader />
     ) : (
-      <div>
+      <div className="bg-[#CBA27E]">
       <Header activeHeading={2} />
       <br />
       <br />

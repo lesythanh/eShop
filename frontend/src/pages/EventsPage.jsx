@@ -11,7 +11,7 @@ const EventsPage = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div>
+        <div className="bg-[#CBA27E] h-screen">
           <Header activeHeading={4} />
           <EventCard active={true} data={allEvents && allEvents[0]} />
         </div>

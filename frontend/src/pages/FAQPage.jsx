@@ -5,7 +5,7 @@ import styles from "../styles/styles";
 
 const FAQPage = () => {
   return (
-    <div>
+    <div className="bg-[#CBA27E]">
       <Header activeHeading={5} />
       <Faq />
       <Footer />
