@@ -60,6 +60,7 @@ import axios from "axios";
 import { server } from "./server";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   const [stripeApikey, setStripeApiKey] = useState("");
@@ -78,6 +79,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       {stripeApikey && (
         <Elements stripe={loadStripe(stripeApikey)}>
           <Routes>
