@@ -148,11 +148,11 @@ const ProductDetails = ({ data }) => {
                 <p className="mt-2 text-sm 800px:text-base text-gray-600">{data.description.slice(0, 200) + "..."}</p>
                 <div className="flex pt-3 items-center">
                   <h4 className={`${styles.productDiscountPrice} text-xl 800px:text-2xl font-bold`}>
-                    {data.discountPrice}$
+                    {data.discountPrice}VNĐ
                   </h4>
                   {data.originalPrice && (
                     <h3 className={`${styles.price} text-lg 800px:text-xl ml-3`}>
-                      {data.originalPrice}$
+                      {data.originalPrice}VNĐ
                     </h3>
                   )}
                 </div>
