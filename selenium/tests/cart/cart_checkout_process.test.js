@@ -135,8 +135,8 @@ describe('Cart - Checkout Process Tests', function() {
       const total = parseFloat(totalText.replace('$', ''));
       
       // Verify that subtotal + shipping approximately equals the total (allowing for small rounding differences)
-      const calculatedTotal = (subtotal + shipping).toFixed(2);
-      const displayedTotal = total.toFixed(2);
+      const calculatedTotal = (subtotal + shipping);
+      const displayedTotal = total;
       expect(Math.abs(parseFloat(calculatedTotal) - parseFloat(displayedTotal))).to.be.lessThan(0.1, 'Total price calculation is incorrect');
     } catch (error) {
       console.log("Error verifying checkout totals:", error);

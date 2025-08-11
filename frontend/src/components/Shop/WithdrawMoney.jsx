@@ -99,7 +99,7 @@ const WithdrawMoney = () => {
     }
   };
 
-  const availableBalance = seller?.availableBalance.toFixed(2);
+  const availableBalance = seller?.availableBalance;
 
   return (
     <div className="w-full h-[90vh] p-8">

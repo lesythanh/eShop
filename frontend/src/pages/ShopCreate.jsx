@@ -13,8 +13,8 @@ const ShopCreatePage = () => {
     }
   }, [])
   return (
-    <div>
-        <ShopCreate />
+    <div className="bg-[#CBA27E]">
+      <ShopCreate />
     </div>
   )
 }
