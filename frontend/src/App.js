@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import {
   LoginPage,
   SignupPage,
@@ -78,11 +79,12 @@ const App = () => {
   }, []);
 
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      {stripeApikey && (
-        <Elements stripe={loadStripe(stripeApikey)}>
-          <Routes>
+    <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+      <BrowserRouter>
+        <ScrollToTop />
+        {stripeApikey && (
+          <Elements stripe={loadStripe(stripeApikey)}>
+            <Routes>
             <Route
               path="/payment"
               element={
@@ -332,6 +334,7 @@ const App = () => {
         theme="dark"
       />
     </BrowserRouter>
+  </GoogleOAuthProvider>
   );
 };
 

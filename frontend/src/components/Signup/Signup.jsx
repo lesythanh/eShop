@@ -6,6 +6,7 @@ import { RxAvatar } from "react-icons/rx";
 import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
+import GoogleLoginButton from "../GoogleLoginButton";
 
 const Singup = () => {
   const [email, setEmail] = useState("");
@@ -168,13 +169,27 @@ const Singup = () => {
                 Submit
               </button>
             </div>
+          </form>
+            <div className="mt-6">
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-gray-300" />
+                </div>
+                <div className="relative flex justify-center text-sm">
+                  <span className="px-2 bg-white text-gray-500">Or continue with</span>
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <GoogleLoginButton />
+              </div>
+            </div>
             <div className={`${styles.noramlFlex} w-full`}>
               <h4>Already have an account?</h4>
               <Link to="/login" className="text-blue-600 pl-2">
                 Sign In
               </Link>
             </div>
-          </form>
         </div>
       </div>
     </div>

@@ -8,6 +8,7 @@ const jwt = require("jsonwebtoken");
 const sendMail = require("../utils/sendMail");
 const sendToken = require("../utils/jwtToken");
 const { isAuthenticated, isAdmin } = require("../middleware/auth");
+const client = require("../model/loginGoogle");
 
 // create user
 router.post("/create-user", async (req, res, next) => {
@@ -410,6 +411,47 @@ router.delete(
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
+
+router.post(
+  "/google-login",
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const { token } = req.body;
+
+      const ticket = await client.verifyIdToken({
+        idToken: token,
+        audience: process.env.GOOGLE_CLIENT_ID,
+      });
+
+      const payload = ticket.getPayload();
+      const { email, name, picture, sub: googleId } = payload;
+
+      let user = await User.findOne({ email });
+
+      if (!user) {
+        user = await User.create({
+          name,
+          email,
+          avatar: {
+            public_id: `google_${googleId}`,
+            url: picture,
+          },
+          password: `google_${googleId}_${Date.now()}`,
+          googleId,
+          isGoogleAuth: true,
+        });
+      } else if (!user.googleId) {
+        user.googleId = googleId;
+        user.isGoogleAuth = true;
+        await user.save();
+      }
+
+      sendToken(user, 200, res);
+    } catch (error) {
+      return next(new ErrorHandler("Google authentication failed", 400));
     }
   })
 );
