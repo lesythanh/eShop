@@ -27,7 +27,28 @@ const AllProducts = () => {
 
   }, [dispatch, error, seller._id]);
 
+  const isProductInLocalStorageCarts = (productId) => {
+    try {
+      const cartItems = localStorage.getItem("cartItems");
+
+      if (cartItems) {
+        const parsedCart = JSON.parse(cartItems);
+        return parsedCart.some(item => item._id === productId);
+      }
+
+      return false;
+    } catch (error) {
+      console.log("Error checking localStorage cart:", error);
+      return false;
+    }
+  };
+
   const handleDelete = async (id) => {
+    if (isProductInLocalStorageCarts(id)) {
+      toast.error("Cannot delete this product as it's currently in a user's shopping cart. Please wait for the user to complete their purchase or remove it from cart.");
+      return;
+    }
+
     if (window.confirm("Are you sure you want to delete this product?")) {
       try {
         await dispatch(deleteProduct(id));
@@ -35,7 +56,13 @@ const AllProducts = () => {
         dispatch(getAllProductsShop(seller._id));
         dispatch({ type: "clearErrors" });
       } catch (error) {
-        toast.error("Failed to delete product");
+        const errorMessage = error.response?.data?.message || "Failed to delete product";
+
+        if (errorMessage.includes("currently in users' carts")) {
+          toast.error("Cannot delete this product as it's currently in users' shopping carts. Please wait for customers to complete their purchases.");
+        } else {
+          toast.error(errorMessage);
+        }
       }
     }
   };

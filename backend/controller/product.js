@@ -7,6 +7,7 @@ const Order = require("../model/order");
 const Shop = require("../model/shop");
 const cloudinary = require("cloudinary");
 const ErrorHandler = require("../utils/ErrorHandler");
+const User = require("../model/user");
 
 // create product
 router.post(
@@ -73,6 +74,19 @@ router.get(
   })
 );
 
+const checkProductInCarts = async (productId) => {
+  try {
+    const usersWithProduct = await User.find({
+      "cart._id": productId
+    });
+
+    return usersWithProduct.length > 0;
+  } catch (error) {
+    console.log("Error checking product in carts:", error);
+    return false;
+  }
+};
+
 // delete product of a shop
 router.delete(
   "/delete-shop-product/:id",
@@ -85,8 +99,17 @@ router.delete(
         return next(new ErrorHandler("Product is not found with this id", 404));
       }
 
+      const isInCart = await checkProductInCarts(req.params.id);
+
+      if (isInCart) {
+        return next(new ErrorHandler("Cannot delete product. This product is currently in users' shopping carts. Please wait for users to complete their purchases.", 400));
+      }
+
+      // Delete images from cloudinary
       for (let i = 0; i < product.images.length; i++) {
-        await cloudinary.v2.uploader.destroy(product.images[i].public_id);
+        const result = await cloudinary.v2.uploader.destroy(
+          product.images[i].public_id
+        );
       }
 
       await Product.findByIdAndDelete(req.params.id);
