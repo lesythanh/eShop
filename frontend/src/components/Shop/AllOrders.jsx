@@ -75,7 +75,7 @@ const AllOrders = () => {
       row.push({
         id: item._id,
         itemsQty: item.cart.length,
-        total: "VNĐ " + item.totalPrice,
+        total: item.totalPrice + " VNĐ",
         status: item.status,
       });
     });

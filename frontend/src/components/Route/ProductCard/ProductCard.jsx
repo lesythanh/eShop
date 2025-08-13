@@ -88,8 +88,7 @@ const ProductCard = ({ data,isEvent }) => {
               <h5 className={`${styles.productDiscountPrice}`}>
                 {data.originalPrice === 0
                   ? data.originalPrice
-                  : data.discountPrice}
-                VNĐ
+                  : data.discountPrice} VNĐ
               </h5>
               <h4 className={`${styles.price}`}>
                 {data.originalPrice ? data.originalPrice + " VNĐ" : null}
